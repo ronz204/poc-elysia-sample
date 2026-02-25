@@ -5,10 +5,14 @@
     "dev": "bun run --watch source/Entrypoint.ts"
   },
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.4.1",
+    "@prisma/client": "^7.4.1",
     "elysia": "latest"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/bun": "latest",
+    "prisma": "^7.4.1"
   },
   "private": true,
   "type": "module",
