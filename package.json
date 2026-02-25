@@ -1,15 +1,16 @@
 {
-  "name": "poc-elysia-sample",
+  "name": "psample",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch source/Entrypoint.ts"
   },
   "dependencies": {
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/bun": "latest"
   },
-  "module": "src/index.js"
+  "private": true,
+  "type": "module",
+  "module": "source/Entrypoint.ts"
 }
