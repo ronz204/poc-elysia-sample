@@ -23,5 +23,10 @@
 
     // Bun runtime types
     "types": ["@types/bun"],
+
+    // Path aliases
+    "paths": {
+      "@Prisma/*": ["./generated/prisma/*"]
+    }
   }
 }
