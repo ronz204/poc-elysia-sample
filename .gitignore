@@ -39,4 +39,5 @@ package-lock.json
 **/*.bun
 
 # prisma
+*.db
 /generated/prisma
