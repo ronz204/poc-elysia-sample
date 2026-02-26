@@ -1,22 +1,26 @@
 import { t } from "elysia";
 
+const UserDTO = t.Object({
+  id: t.Number(),
+  name: t.String(),
+  email: t.String()
+});
+
 const RetrieveQuery = t.Object({
   page: t.Optional(t.Number()),
   limit: t.Optional(t.Number()),
 });
 
-const Status200 = t.Object({
-  users: t.Array(t.Object({
-    id: t.Number(),
-    name: t.String(),
-    email: t.String()
-  }))
+const RetrieveStatus200 = t.Object({
+  users: t.Array(UserDTO)
 });
 
-export const RetrieveUsersSchemas = {
+export const RetrieveSchema = {
   query: RetrieveQuery,
-  responses: [Status200],
-};
+  responses: {
+    200: RetrieveStatus200,
+  },
+} as const;
 
-export type RetrieveUsers200 = typeof Status200.static;
 export type RetrieveUserQuery = typeof RetrieveQuery.static;
+export type RetrieveUserStatus200 = typeof RetrieveStatus200.static;
