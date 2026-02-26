@@ -1,7 +1,8 @@
 import { Elysia } from "elysia";
 import { UserService } from "./UserService";
 import { PrismaPlugin } from "./PrismaPlugin";
-import { ListUser200Response } from "./UserSchema";
+import { RetrieveUsersSpec } from "./UserSpecs";
+import { RetrieveUsersSchemas } from "./UserSchema";
 
 export const UserPlugin = new Elysia({ prefix: "/users" })
   .use(PrismaPlugin)
@@ -10,11 +11,11 @@ export const UserPlugin = new Elysia({ prefix: "/users" })
     service: new UserService(prisma)
   }))
 
-  .get("/list", async ({ service }) => {
-    const users = await service.listUsers();
+  .get("/all", async ({ service, query }) => {
+    const spec = new RetrieveUsersSpec(query);
+    const users = await service.retrieve(spec);
     return { users };
   }, {
-    response: [
-      ListUser200Response
-    ],
+    query: RetrieveUsersSchemas.query,
+    response: RetrieveUsersSchemas.responses,
   });
