@@ -1,8 +1,8 @@
 import { Elysia } from "elysia";
-import { UserPlugin } from "./UserPlugin";
+import { UsersPlugin } from "@modules/users/plugin";
 
 const app = new Elysia()
-  .use(UserPlugin)
+  .use(UsersPlugin)
   .listen(3000);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
