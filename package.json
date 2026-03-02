@@ -2,7 +2,7 @@
   "name": "psample",
   "version": "1.0.50",
   "scripts": {
-    "dev": "bun run --watch source/Entrypoint.ts"
+    "dev": "bun run --watch source/entry.ts"
   },
   "dependencies": {
     "@prisma/adapter-libsql": "^7.4.1",
@@ -16,5 +16,5 @@
   },
   "private": true,
   "type": "module",
-  "module": "source/Entrypoint.ts"
+  "module": "source/entry.ts"
 }
