@@ -26,9 +26,12 @@
 
     // Path aliases
     "paths": {
-      "@Prisma/*": ["./generated/prisma/*"],
-      "@Seeders/*": ["./prisma/Seeders/*"],
-      "@Specs/*": ["./prisma/Specs/*"],
+      "@seeders/*": ["./prisma/seeds/*"],
+      "@modules/*": ["./source/modules/*"],
+      "@prisma/*": ["./generated/prisma/*"],
+      "@specs/*": ["./source/shared/specs/*"],
+      "@plugins/*": ["./source/shared/plugins/*"],
+      "@contracts/*": ["./source/shared/contracts/*"],
     }
   }
 }
