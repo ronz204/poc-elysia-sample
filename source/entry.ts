@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { UsersPlugin } from "@modules/users/plugin";
+import { UsersPlugin } from "@modules/users/users.plugin";
 
 const app = new Elysia()
   .use(UsersPlugin)
