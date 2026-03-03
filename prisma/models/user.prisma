@@ -5,7 +5,7 @@ model User {
   password String
 
   posts    Post[]
-  comments Comments[]
+  comments Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

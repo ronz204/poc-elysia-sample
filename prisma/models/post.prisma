@@ -3,7 +3,7 @@ model Post {
   title   String
   content String
 
-  comments Comments[]
+  comments Comment[]
 
   authorId Int
   author   User @relation(fields: [authorId], references: [id])
