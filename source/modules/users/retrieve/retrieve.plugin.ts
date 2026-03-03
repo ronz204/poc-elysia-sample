@@ -1,16 +1,16 @@
-import { RetrieveUsersHandler } from "./retrieve.handler";
 import { PrismaPlugin } from "@plugins/prisma.plugin";
+import { RetrieveHandler } from "./retrieve.handler";
 import { RetrieveSchema } from "./retrieve.schema";
 import { Elysia } from "elysia";
 
-export const RetrievePlugin = new Elysia({ prefix: "/all" })
+export const RetrievePlugin = new Elysia()
   .use(PrismaPlugin)
   
   .decorate(({ prisma }) => ({
-    handler: new RetrieveUsersHandler(prisma)
+    handler: new RetrieveHandler(prisma)
   }))
   
-  .get("/", async ({ handler, query, status }) => {
+  .get("/all", async ({ handler, query, status }) => {
     const response = await handler.handle(query);
     return status(200, response);
   }, {

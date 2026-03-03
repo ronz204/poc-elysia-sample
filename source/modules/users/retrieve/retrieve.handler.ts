@@ -5,7 +5,7 @@ import type { Handler } from "@contracts/handler.base";
 import type { RetrieveQuery as Query } from "./retrieve.schema";
 import type { RetrieveResponse as Response } from "./retrieve.schema";
 
-export class RetrieveUsersHandler implements Handler<Query, Response> {
+export class RetrieveHandler implements Handler<Query, Response> {
   constructor(private prisma: PrismaClient) {};
 
   public async handle(input: Query): Promise<Response> {
