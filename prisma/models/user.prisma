@@ -4,7 +4,8 @@ model User {
   email    String @unique
   password String
 
-  posts Post[]
+  posts    Post[]
+  comments Comments[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
