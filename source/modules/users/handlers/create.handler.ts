@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { ExistsSpecify } from "../specs/exists.specify";
-import { CreateSpecify } from "../specs/create.specify";
+import { ExistsSpecify } from "../specifies/exists.specify";
+import { CreateSpecify } from "../specifies/create.specify";
 
 import type { Handler } from "@contracts/handler.contract";
 import type { CreateCommand } from "../schemas/create.schemas";
