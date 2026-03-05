@@ -7,11 +7,11 @@ export const RetrievePlugin = new Elysia()
   .use(PrismaPlugin)
   
   .decorate(({ prisma }) => ({
-    handler: new RetrieveHandler(prisma)
+    retrieve: new RetrieveHandler(prisma)
   }))
   
-  .get("/all", async ({ handler, query, status }) => {
-    const response = await handler.handle(query);
+  .get("/all", async ({ retrieve, query, status }) => {
+    const response = await retrieve.handle(query);
     return status(200, response);
   }, {
     query: RetrieveSchema.query,
