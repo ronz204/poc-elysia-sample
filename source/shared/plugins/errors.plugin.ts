@@ -4,8 +4,8 @@ export abstract class BaseError extends Error {
   abstract readonly code: string;
   abstract readonly status: number;
 
-  constructor(message: string) {
-    super(message);
+  constructor() {
+    super();
     this.name = this.constructor.name;
     Object.setPrototypeOf(this, new.target.prototype);
   };
@@ -13,30 +13,24 @@ export abstract class BaseError extends Error {
   public toResponse(): Response {
     return Response.json({
       code: this.code,
-      message: this.message
+      message: this.message,
     }, { status: this.status });
   };
 };
 
-export class SampleFirstError extends BaseError {
-  readonly code = "SAMPLE_FIRST_ERROR";
+export class UserAlreadyExistsError extends BaseError {
   readonly status = 400;
-};
-
-export class SampleSecondError extends BaseError {
-  readonly code = "SAMPLE_SECOND_ERROR";
-  readonly status = 500;
+  readonly code = "USER_ALREADY_EXISTS";
+  readonly message: string = "User with the provided email already exists";
 };
 
 export const ErrorsPlugin = new Elysia({ name: "errors" })
   .error({
-    SampleFirstError,
-    SampleSecondError,
+    UserAlreadyExistsError,
   })
   .onError(({ error, code }) => {
     switch (code) {
-      case "SampleFirstError":
-      case "SampleSecondError":
+      case "UserAlreadyExistsError":
         return error.toResponse();
 
       case "NOT_FOUND":
