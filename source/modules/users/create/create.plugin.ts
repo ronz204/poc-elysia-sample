@@ -7,12 +7,13 @@ export const CreatePlugin = new Elysia()
   .use(PrismaPlugin)
   
   .decorate(({ prisma }) => ({
-    create: new CreateHandler(prisma)
+    createH: new CreateHandler(prisma)
   }))
   
-  .post("/new", async ({ create, body, status }) => {
-    const response = await create.handle(body);
+  .post("/new", async ({ createH, body, status }) => {
+    const response = await createH.handle(body);
     return status(201, response);
   }, {
     body: CreateSchema.body,
+    response: CreateSchema.response,
   });
