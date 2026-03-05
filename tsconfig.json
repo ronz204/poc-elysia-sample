@@ -29,7 +29,7 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@modules/*": ["./source/modules/*"],
       "@prisma/*": ["./generated/prisma/*"],
-      "@specs/*": ["./source/shared/specs/*"],
+      "@database/*": ["./source/database/*"],
       "@plugins/*": ["./source/shared/plugins/*"],
       "@contracts/*": ["./source/shared/contracts/*"],
     }
