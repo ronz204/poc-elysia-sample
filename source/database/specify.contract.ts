@@ -1,10 +1,14 @@
 export abstract class Specify {
-  private DEFAULT_PAGE = 1;
-  private DEFAULT_LIMIT = 10;
-
   abstract toQuery(): any;
+};
 
-  protected toPaginate(query: Paginated) {
+
+
+
+/* private DEFAULT_PAGE = 1;
+  private DEFAULT_LIMIT = 10; */
+
+/* protected toPaginate(query: Paginated) {
     const page = query.page ?? this.DEFAULT_PAGE;
     const limit = query.limit ?? this.DEFAULT_LIMIT;
 
@@ -12,10 +16,10 @@ export abstract class Specify {
     const take = limit;
 
     return { skip, take };
-  };
-};
+  }; */
 
-interface Paginated {
+/* interface Paginated {
   page?: number;
   limit?: number;
 };
+ */
