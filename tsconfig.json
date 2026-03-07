@@ -30,6 +30,7 @@
       "@prisma/*": ["./generated/prisma/*"],
       "@database/*": ["./source/database/*"],
       "@features/*": ["./source/features/*"],
+      "@services/*": ["./source/services/*"],
       "@errors/*": ["./source/shared/errors/*"],
       "@plugins/*": ["./source/shared/plugins/*"],
       "@contracts/*": ["./source/shared/contracts/*"],
