@@ -1,10 +1,15 @@
+export interface ErrorArgs {
+  code: string;
+  message: string;
+};
+
 export abstract class BaseError extends Error {
   public readonly code: string;
   public readonly status: number;
 
-  constructor(message: string, code: string, status: number) {
-    super(message);
-    this.code = code;
+  constructor(status: number, args: ErrorArgs) {
+    super(args.message);
+    this.code = args.code;
     this.status = status;
   };
 
