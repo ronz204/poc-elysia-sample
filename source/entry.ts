@@ -3,7 +3,7 @@ import { logixlysia } from "logixlysia";
 import { ErrorsPlugin } from "@plugins/errors.plugin";
 import { UsersPlugin } from "./features/users/user.plugin";
 
-const app = new Elysia()
+export const app = new Elysia()
   .use(logixlysia({
     config: {
       showStartupMessage: true,
