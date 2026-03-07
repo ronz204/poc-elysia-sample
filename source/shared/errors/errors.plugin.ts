@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
+import { ConflictError } from "./conflict.error";
 import { BaseError } from "@contracts/errors.contract";
-import { ConflictError } from "@errors/conflict.error";
 
 export const ErrorsPlugin = new Elysia()
   .error({

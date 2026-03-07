@@ -33,7 +33,7 @@
       "@services/*": ["./source/services/*"],
       "@contracts/*": ["./source/contracts/*"],
       "@errors/*": ["./source/shared/errors/*"],
-      "@plugins/*": ["./source/shared/plugins/*"],
+      "@logging/*": ["./source/shared/logging/*"],
     }
   }
 }
