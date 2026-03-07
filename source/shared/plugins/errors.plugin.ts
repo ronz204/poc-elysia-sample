@@ -1,10 +1,10 @@
 import { Elysia } from "elysia";
 import { BaseError } from "@contracts/errors.contract";
-import { UserAlreadyExistsError } from "@features/users/user.errors";
+import { ConflictError } from "@errors/conflict.error";
 
 export const ErrorsPlugin = new Elysia()
   .error({
-    UserAlreadyExistsError,
+    ConflictError,
   })
   
   .onError(({ error, set, code }) => {
