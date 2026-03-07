@@ -1,5 +1,7 @@
+import { UserErrors } from "../user.errors";
 import { PrismaClient } from "@prisma/client";
-import { UserAlreadyExistsError } from "../user.errors";
+
+import { ConflictError } from "@errors/conflict.error";
 import { ExistsSpecify } from "../prisma/exists.specify";
 import { CreateSpecify } from "../prisma/create.specify";
 
@@ -14,7 +16,7 @@ export class CreateHandler implements Handler<CreateCommand, CreateResponse> {
     const existsQuery = new ExistsSpecify(command).toQuery();
     
     const exists = await this.prisma.user.findFirst(existsQuery);
-    if (exists) throw new UserAlreadyExistsError("User with these credentials already exists");
+    if (exists) throw new ConflictError(UserErrors.ALREADY_EXISTS);
 
     const createQuery = new CreateSpecify(command).toQuery();
     return await this.prisma.user.create(createQuery);

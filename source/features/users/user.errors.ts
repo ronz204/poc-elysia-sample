@@ -1,5 +1,6 @@
-import { BaseError } from "@contracts/errors.contract";
-
-export class UserAlreadyExistsError extends BaseError {
-  constructor(message: string) {super(message, "USER_ALREADY_EXISTS", 409)};
+export const UserErrors = {
+  ALREADY_EXISTS: {
+    code: "USER_ALREADY_EXISTS",
+    message: "User with these credentials already exists",
+  },
 };
