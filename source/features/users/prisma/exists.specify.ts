@@ -2,6 +2,7 @@ import { Specify } from "@contracts/specify.contract";
 import type { UserFindFirstArgs } from "@prisma/models";
 
 interface ExistsCommand {
+  id?: number;
   name?: string;
   email?: string;
 };
@@ -13,6 +14,7 @@ export class ExistsSpecify extends Specify {
     return {
       where: {
         OR: [
+          { id: this.command.id },
           { name: this.command.name },
           { email: this.command.email },
         ],
