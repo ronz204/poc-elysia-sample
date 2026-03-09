@@ -3,7 +3,7 @@ import { PrismaPlugin } from "@database/prisma.plugin";
 import { RetrieveSchema } from "../schemas/retrieve.schema";
 import { RetrieveHandler } from "../handlers/retrieve.handler";
 
-export const RetrievePlugin = new Elysia()
+export const RetrievePlugin = new Elysia({ name: "retrieve.users" })
   .use(PrismaPlugin)
   
   .decorate(({ prisma }) => ({

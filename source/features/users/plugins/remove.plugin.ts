@@ -3,7 +3,7 @@ import { PrismaPlugin } from "@database/prisma.plugin";
 import { RemoveSchema } from "../schemas/remove.schema";
 import { RemoveHandler } from "../handlers/remove.handler";
 
-export const RemovePlugin = new Elysia()
+export const RemovePlugin = new Elysia({ name: "remove.users" })
   .use(PrismaPlugin)
 
   .decorate(({ prisma }) => ({

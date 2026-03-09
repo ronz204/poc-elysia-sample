@@ -3,7 +3,7 @@ import { PrismaPlugin } from "@database/prisma.plugin";
 import { CreateSchema } from "../schemas/create.schema";
 import { CreateHandler } from "../handlers/create.handler";
 
-export const CreatePlugin = new Elysia()
+export const CreatePlugin = new Elysia({ name: "create.users" })
   .use(PrismaPlugin)
 
   .decorate(({ prisma }) => ({
