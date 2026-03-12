@@ -28,12 +28,15 @@
     "paths": {
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
+
+      "@plugins/*": ["./source/plugins/*"],
       "@database/*": ["./source/database/*"],
       "@features/*": ["./source/features/*"],
       "@services/*": ["./source/services/*"],
       "@contracts/*": ["./source/contracts/*"],
+
       "@errors/*": ["./source/shared/errors/*"],
-      "@logging/*": ["./source/shared/logging/*"],
+      "@helpers/*": ["./source/shared/helpers/*"],
     }
   }
 }
