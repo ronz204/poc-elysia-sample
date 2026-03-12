@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
-import { logger } from "./pino.helper";
 import { logixlysia } from "logixlysia";
+import { logger } from "@helpers/logger.helper";
 
 export const LogixPlugin = new Elysia()
   .use(logixlysia({

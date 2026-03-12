@@ -1,12 +1,12 @@
 import { Elysia } from "elysia";
-import { ConflictError } from "./conflict.error";
+import { ConflictError } from "@errors/conflict.error";
 import { BaseError } from "@contracts/errors.contract";
 
 export const ErrorsPlugin = new Elysia()
   .error({
     ConflictError,
   })
-  
+
   .onError(({ error, set, code }) => {
     if (error instanceof BaseError) {
       return error.toResponse();
