@@ -1,22 +1,22 @@
 import { Specify } from "@contracts/specify.contract";
 import type { UserFindFirstArgs } from "@prisma/models";
 
-interface ExistsCommand {
+interface SpecifyArgs {
   id?: number;
   name?: string;
   email?: string;
 };
 
 export class ExistsSpecify extends Specify {
-  constructor(private command: ExistsCommand) {super()};
+  constructor(private args: SpecifyArgs) {super()};
 
   public override toQuery() {
     return {
       where: {
         OR: [
-          { id: this.command.id },
-          { name: this.command.name },
-          { email: this.command.email },
+          { id: this.args.id },
+          { name: this.args.name },
+          { email: this.args.email },
         ],
       },
     } as const satisfies UserFindFirstArgs;

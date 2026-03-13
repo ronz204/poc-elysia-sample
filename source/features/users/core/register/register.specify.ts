@@ -1,16 +1,16 @@
 import { Specify } from "@contracts/specify.contract";
 import type { UserCreateArgs } from "@prisma/models";
-import type { RegisterCommand } from "./register.schema";
+import type { RegisterRequest } from "./register.schema";
 
 export class RegisterSpecify extends Specify {
-  constructor(private command: RegisterCommand) {super()};
+  constructor(private args: RegisterRequest) {super()};
 
   public override toQuery() {
     return {
       data: {
-        name: this.command.body.name,
-        email: this.command.body.email,
-        password: this.command.body.password,
+        name: this.args.body.name,
+        email: this.args.body.email,
+        password: this.args.body.password,
       },
       select: {
         id: true,

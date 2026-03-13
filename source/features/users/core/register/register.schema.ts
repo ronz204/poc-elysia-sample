@@ -6,7 +6,7 @@ const RegisterBody = t.Object({
   password: t.String(),
 });
 
-const RegisterCommand = t.Object({
+const RegisterRequest = t.Object({
   body: RegisterBody,
 });
 
@@ -18,12 +18,12 @@ const RegisterResponse = t.Object({
 
 export const RegisterSchema = {
   body: RegisterBody,
-  command: RegisterCommand,
+  request: RegisterRequest,
   response: {
     201: RegisterResponse,
   },
 } as const;
 
 export type RegisterBody = Static<typeof RegisterBody>;
-export type RegisterCommand = Static<typeof RegisterCommand>;
+export type RegisterRequest = Static<typeof RegisterRequest>;
 export type RegisterResponse = Static<typeof RegisterResponse>;

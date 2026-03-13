@@ -6,13 +6,13 @@ import { UserErrors } from "@features/users/users.error";
 import { ExistsSpecify } from "@features/users/prisma/exists.specify";
 
 import type { Handler } from "@contracts/handler.contract";
-import type { RegisterCommand } from "./register.schema";
+import type { RegisterRequest } from "./register.schema";
 import type { RegisterResponse } from "./register.schema";
 
-export class RegisterHandler implements Handler<RegisterCommand, RegisterResponse> {
+export class RegisterHandler implements Handler<RegisterRequest, RegisterResponse> {
   constructor(private readonly prisma: PrismaClient) {};
 
-  public async handle(command: RegisterCommand): Promise<RegisterResponse> {
+  public async handle(command: RegisterRequest): Promise<RegisterResponse> {
     const existsQuery = new ExistsSpecify(command.body).toQuery();
 
     const exists = await this.prisma.user.findFirst(existsQuery);
