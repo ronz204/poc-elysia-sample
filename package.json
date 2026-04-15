@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
+    "@elysiajs/openapi": "^1.4.14",
     "@prisma/adapter-libsql": "^7.7.0",
     "@prisma/client": "^7.7.0",
     "elysia": "latest"
