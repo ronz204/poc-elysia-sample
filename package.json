@@ -5,15 +5,15 @@
     "dev": "bun run --watch source/boot.ts"
   },
   "dependencies": {
-    "@prisma/adapter-libsql": "^7.4.1",
-    "@prisma/client": "^7.4.1",
+    "@prisma/adapter-libsql": "^7.7.0",
+    "@prisma/client": "^7.7.0",
     "elysia": "latest",
     "logixlysia": "^6.2.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/bun": "latest",
-    "prisma": "^7.4.1"
+    "prisma": "^7.7.0"
   },
   "private": true,
   "type": "module",
