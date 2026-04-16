@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import { AuthPlugin } from "@auth/auth.plugin";
+import { RedisPlugin } from "@plugins/redis.plugin";
 import { PrismaPlugin } from "@plugins/prisma.plugin";
 import { MessageDao } from "@dal/message/message.dao";
 
@@ -12,11 +13,12 @@ const name: string = "get-messages.plugin";
 
 export const GetMessagesPlugin = new Elysia({ name })
   .use(AuthPlugin)
+  .use(RedisPlugin)
   .use(PrismaPlugin)
 
-  .derive(({ prisma }) => {
+  .derive(({ prisma, redis }) => {
     const dao = new MessageDao(prisma);
-    const handler = new GetMessagesHandler(dao);
+    const handler = new GetMessagesHandler(dao, redis);
 
     return { handler };
   })
