@@ -25,6 +25,7 @@ export const GetMessagesPlugin = new Elysia({ name })
     const response = await handler.handle({ query, params });
     return status(200, response);
   }, {
+    isAuth: true,
     query: GetMessagesQuery,
     params: GetMessagesParams,
     response: {
