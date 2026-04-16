@@ -23,7 +23,8 @@ export const SignInUserPlugin = new Elysia({ name })
   .post("/signin", async ({ status, body, jwt, handler }) => {
     const response = await handler.handle({ body });
     const token = await jwt.sign(response);
-    return status(200, { token });
+    
+    return status(200, { token, type: "Bearer" });
   }, {
     body: SignInUserBody,
     response: {

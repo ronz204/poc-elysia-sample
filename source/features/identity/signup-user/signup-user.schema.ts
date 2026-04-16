@@ -16,6 +16,7 @@ export const SignUpUserPayload = t.Object({
 
 export const SignUpUserResponse = t.Object({
   token: t.String(),
+  type: t.String(),
 });
 
 export type SignUpUserRequest = Static<typeof SignUpUserRequest>;

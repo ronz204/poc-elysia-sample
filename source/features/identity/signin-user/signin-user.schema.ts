@@ -15,6 +15,7 @@ export const SignInUserPayload = t.Object({
 
 export const SignInUserResponse = t.Object({
   token: t.String(),
+  type: t.String(),
 });
 
 export type SignInUserRequest = Static<typeof SignInUserRequest>;
