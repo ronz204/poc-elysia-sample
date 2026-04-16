@@ -1,11 +1,10 @@
-interface ErrorResponse {
+export interface ErrorResponse {
   success: false;
   error: {
     code: string;
     message: string;
   };
 };
-
 
 export class BaseError extends Error {
   constructor(
