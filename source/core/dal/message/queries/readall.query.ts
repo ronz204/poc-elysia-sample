@@ -1,9 +1,11 @@
 import type { RoomFindFirstArgs } from "@prisma/models";
 import type { RoomGetPayload } from "@prisma/models";
 
-export namespace Messages {
+export namespace ReadAll {
   export interface Args {
     roomId: number;
+    limit?: number;
+    offset?: number;
   };
 
   export function query(args: Args) {
@@ -14,6 +16,8 @@ export namespace Messages {
       include: {
         messages: {
           include: { sender: true },
+          take: args.limit,
+          skip: args.offset,
         },
       },
     } satisfies RoomFindFirstArgs;
