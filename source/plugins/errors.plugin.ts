@@ -1,10 +1,10 @@
 import { Elysia } from "elysia";
 import { BaseError } from "@errors/base.error";
-import { ValidationError } from "@errors/default.error";
 
 import { 
   ConflictError,
   NotFoundError,
+  ValidationError,
 } from "@errors/barrep.error";
 
 export const ErrorPlugin = new Elysia({ name: "error.plugin" })
