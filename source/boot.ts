@@ -4,7 +4,6 @@ import { ErrorPlugin } from "@plugins/errors.plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
 
-import { RoomsPlugin } from "@features/rooms/plugin";
 import { IdentityPlugin } from "@features/identity/plugin";
 
 export const app = new Elysia({ prefix: "/api" })
@@ -12,7 +11,6 @@ export const app = new Elysia({ prefix: "/api" })
   .use(CorsPlugin)
   .use(HealthPlugin)
   .use(ScalarPlugin)
-  .use(RoomsPlugin)
   .use(IdentityPlugin)
   .listen(3000);
 
