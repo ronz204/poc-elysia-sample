@@ -4,8 +4,6 @@ model User {
   email    String @unique
   password String
 
-  messages Message[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
