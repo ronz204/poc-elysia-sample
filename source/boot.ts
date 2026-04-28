@@ -4,7 +4,7 @@ import { ErrorPlugin } from "@plugins/errors.plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
 
-import { IdentityPlugin } from "@features/identity/plugin";
+import { IdentityPlugin } from "@features/identity/identity.plugin";
 
 export const app = new Elysia({ prefix: "/api" })
   .use(ErrorPlugin)
