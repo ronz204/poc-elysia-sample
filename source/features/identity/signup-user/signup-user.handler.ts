@@ -5,23 +5,24 @@ import type { SignUpUserPayload } from "./signup-user.schema";
 type Request = SignUpUserRequest;
 type Payload = SignUpUserPayload;
 
+import { AuthMapper } from "@auth/auth.mapper";
 import { NotFoundError } from "@errors/barrep.error";
 
 export class SignUpUserHandler {
   constructor(private dao: IUserDao) {};
 
-  public async handle(req: Request): Promise<Payload> {
-    const exists = await this.dao.obtain(req.body);
+  public async handle({ body }: Request): Promise<Payload> {
+    const exists = await this.dao.obtain(body);
     if (exists) throw new NotFoundError("User already exists");
 
-    const hashed = await this.hash(req);
+    const hashed = await this.hash({ body });
     const created = await this.dao.create({
-      ...req.body, password: hashed,});
+      ...body, password: hashed,});
 
-    return { userId: created.id };
+    return AuthMapper.toResponse(created);
   };
 
-  private async hash(req: Request): Promise<string> {
-    return await Bun.password.hash(req.body.password);
+  private async hash({ body }: Request): Promise<string> {
+    return await Bun.password.hash(body.password);
   };
 };

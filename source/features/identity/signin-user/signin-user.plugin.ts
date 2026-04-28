@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { UserDao } from "@dal/users/user.dao";
 import { AuthPlugin } from "@auth/auth.plugin";
-import { PrismaPlugin } from "@plugins/prisma.plugin";
+import { PrismaPlugin } from "@database/prisma.plugin";
 
 import { SignInUserBody } from "./signin-user.schema";
 import { SignInUserHandler } from "./signin-user.handler";
@@ -16,7 +16,6 @@ export const SignInUserPlugin = new Elysia({ name })
   .derive(({ prisma }) => {
     const dao = new UserDao(prisma);
     const handler = new SignInUserHandler(dao);
-
     return { handler };
   })
 
