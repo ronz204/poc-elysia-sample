@@ -1,8 +1,9 @@
 import { Elysia } from "elysia";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { PrismaClient } from "@prisma/client";
+import { ORMConfig } from "@configs/orm.config";
+import { PrismaLibSql } from "@prisma/adapter-libsql";
 
-const url = process.env.DATABASE_URL ?? "";
+const url = ORMConfig.DATABASE_URL;
 const adapter = new PrismaLibSql({ url });
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
