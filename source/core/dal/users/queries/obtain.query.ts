@@ -13,6 +13,7 @@ export namespace Obtain {
         id: args.id,
         name: args.name,
         email: args.email,
+        active: true,
       },
     } satisfies UserFindFirstArgs;
   };
