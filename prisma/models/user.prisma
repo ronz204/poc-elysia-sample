@@ -5,6 +5,8 @@ model User {
   password String
   active   Boolean @default(true)
 
+  sessions Session[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

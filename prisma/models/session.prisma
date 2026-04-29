@@ -1,0 +1,18 @@
+model Session {
+  id      Int    @id @default(autoincrement())
+  hash    String @unique
+  agent   String
+  device  String
+  address String
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sessions")
+}
