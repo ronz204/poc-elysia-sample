@@ -1,4 +1,5 @@
 import { Elysia } from "elysia";
+import { AppConfig } from "@configs/app.config";
 import { CorsPlugin } from "@plugins/cors.plugin";
 import { ErrorPlugin } from "@plugins/errors.plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
@@ -12,7 +13,6 @@ export const app = new Elysia({ prefix: "/api" })
   .use(HealthPlugin)
   .use(ScalarPlugin)
   .use(IdentityPlugin)
-  .listen(3000);
+  .listen(AppConfig.APP_PORT);
 
-const url = `http://${app.server?.hostname}:${app.server?.port}`;
-console.log(`🦊 Elysia is running at ${url}`);
+console.log(`🦊 Elysia is running at ${AppConfig.APP_DOMAIN}`);
