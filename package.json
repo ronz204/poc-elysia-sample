@@ -12,7 +12,8 @@
     "@elysiajs/openapi": "^1.4.14",
     "@prisma/adapter-libsql": "^7.7.0",
     "@prisma/client": "^7.8.0",
-    "elysia": "latest"
+    "elysia": "latest",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
