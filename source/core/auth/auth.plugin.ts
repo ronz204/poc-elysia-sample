@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
+import { AuthConfig } from "@configs/auth.config";
 import { AuthHeaders, AuthSchema, AuthResponse } from "./auth.schema";
 
 export const AuthPlugin = new Elysia({ name: "auth.plugin" })
@@ -7,7 +8,7 @@ export const AuthPlugin = new Elysia({ name: "auth.plugin" })
     exp: "1h",
     name: "jwt",
     schema: AuthSchema,
-    secret: process.env.JWT_SECRET!,
+    secret: AuthConfig.JWT_SECRET,
   }))
 
   .macro({
