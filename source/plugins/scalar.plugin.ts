@@ -1,13 +1,14 @@
 import { Elysia } from "elysia";
 import openapi from "@elysiajs/openapi";
+import { AppConfig } from "@configs/app.config";
 
 export const ScalarPlugin = new Elysia({ name: "scalar.plugin" })
   .use(openapi({
-    path: "/scalar",
+    path: AppConfig.APP_DOCS,
     documentation: {
       info: {
-        title: "Poc API",
-        version: "1.0.0",
+        title: AppConfig.APP_NAME,
+        version: AppConfig.APP_VERSION,
       },
     },
   }));
