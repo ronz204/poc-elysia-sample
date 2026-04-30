@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
 import { AuthConfig } from "@configs/auth.config";
-import { AuthHeaders, AuthSchema, AuthResponse } from "./auth.schema";
+import { AuthHeaders, AuthResponse, AuthSchema } from "./auth.schema";
 
 export const AuthPlugin = new Elysia({ name: "auth.plugin" })
   .use(jwt({
@@ -12,7 +12,7 @@ export const AuthPlugin = new Elysia({ name: "auth.plugin" })
   }))
 
   .macro({
-    isAuth: {
+    withAuth: {
       headers: AuthHeaders,
       response: AuthResponse,
       resolve: async ({ status, headers, jwt }) => {
