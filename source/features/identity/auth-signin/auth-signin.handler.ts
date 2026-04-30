@@ -7,7 +7,7 @@ type Request = AuthSignInRequest;
 type Response = AuthSignInPayload;
 
 import { AuthMapper } from "@auth/access/auth.mapper";
-import { UAMapper } from "@auth/session/session.mapper";
+import { SessionMapper } from "@auth/session/session.mapper";
 
 export class AuthSignInHandler {
   constructor(
@@ -21,7 +21,7 @@ export class AuthSignInHandler {
     const isValid = await this.verify(body.password, user.password);
     if (!isValid) throw new Error("Invalid credentials");
 
-    const session = UAMapper.toSession({ ua, userId: user.id });
+    const session = SessionMapper.toSession({ ua, userId: user.id });
     await this.sessionDao.create(session);
 
     return AuthMapper.toResponse({ user, refresh: session.hash });

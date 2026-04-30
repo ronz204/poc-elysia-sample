@@ -5,7 +5,7 @@ import { AuthHeaders, AuthResponse, AuthSchema } from "./auth.schema";
 
 export const AuthPlugin = new Elysia({ name: "auth.plugin" })
   .use(jwt({
-    exp: "1h",
+    exp: "15m",
     name: "jwt",
     schema: AuthSchema,
     secret: AuthConfig.JWT_SECRET,
