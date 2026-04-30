@@ -1,13 +1,12 @@
-import type { UAInfo } from "./session.schema";
-import { Create } from "@dal/session/queries/create.query";
+import type { SessionInfo } from "./session.schema";
 
 interface MapperArgs {
-  ua: UAInfo;
+  ua: SessionInfo;
   userId: number;
 };
 
-export abstract class UAMapper {
-  public static toSession(args: MapperArgs): Create.Args {
+export abstract class SessionMapper {
+  public static toSession(args: MapperArgs) {
     return {
       ...args.ua,
       userId: args.userId,

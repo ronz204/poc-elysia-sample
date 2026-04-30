@@ -1,7 +1,19 @@
 import { Elysia } from "elysia";
 import { UAParser } from "ua-parser-js";
+import { AuthConfig } from "@configs/auth.config";
 
-export const UAPlugin = new Elysia({ name: "ua.plugin" })
+export const SessionPlugin = new Elysia({ name: "session.plugin" })
+  .derive({ as: "scoped" }, ({ cookie: { refresh } }) => ({
+    cooker: (value: string) => {
+      refresh?.set({
+        value,
+        httpOnly: true,
+        sameSite: "strict",
+        maxAge: AuthConfig.REFRESH_TTL,
+      });
+    },
+  }))
+
   .macro({
     withUA: {
       resolve: ({ request, server }) => {
@@ -16,4 +28,3 @@ export const UAPlugin = new Elysia({ name: "ua.plugin" })
       },
     },
   });
-
