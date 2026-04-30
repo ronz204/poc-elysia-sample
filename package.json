@@ -13,11 +13,13 @@
     "@prisma/adapter-libsql": "^7.7.0",
     "@prisma/client": "^7.8.0",
     "elysia": "latest",
+    "ua-parser-js": "^2.0.9",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/bun": "latest",
+    "@types/ua-parser-js": "^0.7.39",
     "prisma": "^7.8.0"
   },
   "private": true,
