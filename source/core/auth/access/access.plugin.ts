@@ -1,20 +1,20 @@
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
 import { AuthConfig } from "@configs/auth.config";
-import { AuthHeaders, AuthResponse, AuthSchema } from "./auth.schema";
+import { AccessHeaders, AccessResponse, AccessSchema } from "./access.schema";
 
-export const AuthPlugin = new Elysia({ name: "auth.plugin" })
+export const AccessPlugin = new Elysia({ name: "access.plugin" })
   .use(jwt({
-    exp: "15m",
     name: "jwt",
-    schema: AuthSchema,
-    secret: AuthConfig.JWT_SECRET,
+    schema: AccessSchema,
+    secret: AuthConfig.SECRET,
+    exp: AuthConfig.ACCESS_TTL,
   }))
 
   .macro({
     withAuth: {
-      headers: AuthHeaders,
-      response: AuthResponse,
+      headers: AccessHeaders,
+      response: AccessResponse,
       resolve: async ({ status, headers, jwt }) => {
         const status401 = status(401, {
           error: "Unauthorized",
