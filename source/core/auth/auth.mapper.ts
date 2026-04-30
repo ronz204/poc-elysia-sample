@@ -1,10 +1,15 @@
 import type { User } from "@prisma/client";
-import type { AuthSchema } from "./auth.schema";
 
-export class AuthMapper {
-  public static toResponse(user: User): AuthSchema {
+interface Args {
+  user: User;
+  refresh: string;
+};
+
+export abstract class AuthMapper {
+  public static toResponse(args: Args) {
     return {
-      userId: user.id,
+      userId: args.user.id,
+      refresh: args.refresh,
     };
   };
 };
