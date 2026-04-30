@@ -3,8 +3,18 @@ import { PrismaClient } from "@prisma/client";
 import { ORMConfig } from "@configs/orm.config";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 
+import { UserDao } from "@dal/users/user.dao";
+import { SessionDao } from "@dal/session/session.dao";
+
 const url = ORMConfig.DATABASE_URL;
 const adapter = new PrismaLibSql({ url });
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
-  .decorate("prisma", new PrismaClient({ adapter }));
+  .decorate(() => {
+    const prisma = new PrismaClient({ adapter });
+    
+    return {
+      userDao: new UserDao(prisma),
+      sessionDao: new SessionDao(prisma),
+    };
+  });
