@@ -7,10 +7,10 @@ import { UserDao } from "@dal/users/user.dao";
 import { SessionDao } from "@dal/session/session.dao";
 
 const url = ORMConfig.DATABASE_URL;
-const adapter = new PrismaLibSql({ url });
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
   .decorate(() => {
+    const adapter = new PrismaLibSql({ url });
     const prisma = new PrismaClient({ adapter });
     
     return {
