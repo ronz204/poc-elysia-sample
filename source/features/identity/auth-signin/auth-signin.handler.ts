@@ -6,7 +6,7 @@ import type { AuthSignInPayload } from "./auth-signin.schema";
 type Request = AuthSignInRequest;
 type Response = AuthSignInPayload;
 
-import { AuthMapper } from "@auth/access/auth.mapper";
+import { AccessMapper } from "@auth/access/access.mapper";
 import { SessionMapper } from "@auth/session/session.mapper";
 
 export class AuthSignInHandler {
@@ -24,7 +24,7 @@ export class AuthSignInHandler {
     const session = SessionMapper.toSession({ ua, userId: user.id });
     await this.sessionDao.create(session);
 
-    return AuthMapper.toResponse({ user, refresh: session.hash });
+    return AccessMapper.toResponse({ user, hash: session.hash });
   };
 
   private async verify(psswd: string, hash: string) {

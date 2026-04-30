@@ -13,7 +13,7 @@ export const AuthSignInRequest = t.Object({
 
 export const AuthSignInPayload = t.Object({
   userId: t.Number(),
-  refresh: t.String(),
+  refreshToken: t.String(),
 });
 
 export const AuthSignInResponse = t.Object({
