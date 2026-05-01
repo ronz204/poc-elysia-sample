@@ -12,7 +12,7 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
   }))
 
   .macro({
-    withAuth: {
+    withAccess: {
       headers: AccessHeaders,
       response: AccessResponse,
       resolve: async ({ status, headers, jwt }) => {
