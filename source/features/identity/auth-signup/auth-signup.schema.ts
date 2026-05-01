@@ -1,5 +1,5 @@
 import { t, type Static } from "elysia";
-import { SessionSchema } from "@auth/session/session.schema";
+import { AgentSchema } from "@auth/session/session.schema";
 
 export const AuthSignUpBody = t.Object({
   name: t.String({ minLength: 4, maxLength: 20 }),
@@ -9,7 +9,7 @@ export const AuthSignUpBody = t.Object({
 
 export const AuthSignUpRequest = t.Object({
   body: AuthSignUpBody,
-  ua: SessionSchema,
+  ua: AgentSchema,
 });
 
 export const AuthSignUpPayload = t.Object({

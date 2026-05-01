@@ -25,7 +25,7 @@ export const AuthSignUpPlugin = new Elysia({ name })
     cooker(response.refreshToken);
     return status(200, { token, type: "Bearer" });
   }, {
-    withUA: true,
+    withAgent: true,
     body: AuthSignUpBody,
     response: {
       200: AuthSignUpResponse,

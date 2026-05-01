@@ -1,5 +1,5 @@
 import { t, type Static } from "elysia";
-import { SessionSchema } from "@auth/session/session.schema";
+import { AgentSchema } from "@auth/session/session.schema";
 
 export const AuthSignInBody = t.Object({
   email: t.String({ format: "email", maxLength: 255 }),
@@ -8,7 +8,7 @@ export const AuthSignInBody = t.Object({
 
 export const AuthSignInRequest = t.Object({
   body: AuthSignInBody,
-  ua: SessionSchema,
+  ua: AgentSchema,
 });
 
 export const AuthSignInPayload = t.Object({
