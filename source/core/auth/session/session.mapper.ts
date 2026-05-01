@@ -1,7 +1,7 @@
-import type { SessionInfo } from "./session.schema";
+import type { AgentInfo } from "./session.schema";
 
 interface MapperArgs {
-  ua: SessionInfo;
+  ua: AgentInfo;
   userId: number;
 };
 

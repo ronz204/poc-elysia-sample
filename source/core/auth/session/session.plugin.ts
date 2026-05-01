@@ -1,6 +1,8 @@
-import { Elysia } from "elysia";
+import { Elysia, t } from "elysia";
 import { UAParser } from "ua-parser-js";
+import { CookieSchema } from "./session.schema";
 import { AuthConfig } from "@configs/auth.config";
+import { AccessResponse } from "@auth/access/access.schema";
 
 export const SessionPlugin = new Elysia({ name: "session.plugin" })
   .derive({ as: "scoped" }, ({ cookie: { refresh } }) => ({
@@ -15,7 +17,21 @@ export const SessionPlugin = new Elysia({ name: "session.plugin" })
   }))
 
   .macro({
-    withUA: {
+    withCookie: {
+      cookie: CookieSchema,
+      response: AccessResponse,
+      resolve: ({ status, cookie: { refresh } }) => {
+        const value = refresh?.value;
+        if (typeof value !== "string" || !value) return status(401, {
+          error: "Unauthorized",
+          message: "No refresh token provided.",
+        });
+
+        return { refresh: value };
+      },
+    },
+
+    withAgent: {
       resolve: ({ request, server }) => {
         const agent = request.headers.get("user-agent") ?? "";
         const address = server?.requestIP(request)?.address ?? "";
