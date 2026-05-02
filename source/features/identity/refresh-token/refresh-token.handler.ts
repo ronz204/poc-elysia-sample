@@ -19,9 +19,10 @@ export class RefreshTokenHandler {
 
     await this.sessionDao.revoke({ hash: refresh });
 
-    const newSession = SessionMapper.toSession({ ua, userId: session.userId });
-    await this.sessionDao.create(newSession);
+    const newSession = SessionMapper.toSession({
+      ua, userId: session.userId, expiresAt: session.expiresAt });
 
+    await this.sessionDao.create(newSession);
     return { userId: session.userId, refreshToken: newSession.hash };
   };
 };
