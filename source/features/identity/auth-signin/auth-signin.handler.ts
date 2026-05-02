@@ -28,6 +28,6 @@ export class AuthSignInHandler {
   };
 
   private async verify(psswd: string, hash: string) {
-    return await Bun.password.verify(hash, psswd);
+    return await Bun.password.verify(psswd, hash);
   };
 };
