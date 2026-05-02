@@ -21,10 +21,10 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
           message: "Not authorized to access this resource."
         });
 
-        const auth = headers["authorization"];
-        if (!auth?.startsWith("Bearer ")) return status401;
+        const header = headers["authorization"];
+        if (!header?.startsWith("Bearer ")) return status401;
 
-        const payload = await jwt.verify(auth.slice(7));
+        const payload = await jwt.verify(header.slice(7));
         if (!payload) return status401;
 
         return { userId: payload.userId };
