@@ -1,5 +1,9 @@
 import { t, type Static } from "elysia";
 
+export const AccessQuery = t.Object({
+  token: t.String(),
+});
+
 export const AccessSchema = t.Object({
   userId: t.Number(),
 });
@@ -15,5 +19,6 @@ export const AccessResponse = {
   }),
 } as const;
 
+export type AccessQuery = Static<typeof AccessQuery>;
 export type AccessSchema = Static<typeof AccessSchema>;
 export type AccessHeaders = Static<typeof AccessHeaders>;
