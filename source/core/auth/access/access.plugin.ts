@@ -1,14 +1,14 @@
+import { env } from "@env";
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
-import { AuthConfig } from "@configs/auth.config";
 import { AccessHeaders, AccessResponse, AccessSchema } from "./access.schema";
 
 export const AccessPlugin = new Elysia({ name: "access.plugin" })
   .use(jwt({
     name: "jwt",
     schema: AccessSchema,
-    secret: AuthConfig.SECRET,
-    exp: AuthConfig.ACCESS_TTL,
+    secret: env.SECRET_KEY,
+    exp: env.ACCESS_TTL,
   }))
 
   .macro({

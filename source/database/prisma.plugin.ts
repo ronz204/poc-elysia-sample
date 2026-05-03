@@ -1,12 +1,12 @@
+import { env } from "@env";
 import { Elysia } from "elysia";
 import { PrismaClient } from "@prisma/client";
-import { ORMConfig } from "@configs/orm.config";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 
 import { UserDao } from "@dal/users/user.dao";
 import { SessionDao } from "@dal/session/session.dao";
 
-const url = ORMConfig.DATABASE_URL;
+const url = env.DATABASE_URL;
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
   .decorate(() => {

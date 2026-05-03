@@ -1,7 +1,7 @@
+import { env } from "@env";
 import { Elysia, t } from "elysia";
 import { UAParser } from "ua-parser-js";
 import { CookieSchema } from "./session.schema";
-import { AuthConfig } from "@configs/auth.config";
 import { AccessResponse } from "@auth/access/access.schema";
 
 export const SessionPlugin = new Elysia({ name: "session.plugin" })
@@ -11,7 +11,7 @@ export const SessionPlugin = new Elysia({ name: "session.plugin" })
         value,
         httpOnly: true,
         sameSite: "strict",
-        maxAge: AuthConfig.REFRESH_TTL,
+        maxAge: env.REFRESH_TTL,
       });
     },
   }))

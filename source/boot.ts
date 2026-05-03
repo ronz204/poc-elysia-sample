@@ -1,5 +1,5 @@
+import { env } from "@env";
 import { Elysia } from "elysia";
-import { AppConfig } from "@configs/app.config";
 import { CorsPlugin } from "@plugins/cors.plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
@@ -13,6 +13,7 @@ export const app = new Elysia({ prefix: "/api" })
   .use(ScalarPlugin)
   .use(SandboxPlugin)
   .use(IdentityPlugin)
-  .listen(AppConfig.APP_PORT);
+  .listen(env.APP_PORT);
 
-console.log(`🦊 Elysia is running at ${AppConfig.APP_DOMAIN}`);
+const url = `http://${app.server?.hostname}:${app.server?.port}`;
+console.log(`🦊 Elysia is running at ${url}`);
