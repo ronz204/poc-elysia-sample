@@ -17,6 +17,8 @@ const envSchema = z.object({
   // Security Config
   // ==========================================
   SECRET_KEY: z.string(),
+  ACCESS_TTL: z.string().default("15m"),
+  REFRESH_TTL: z.number().default(7 * 24 * 60 * 60),
   CORS_ORIGIN: z.string().transform((val) => val.split(",").map((origin) => origin.trim())),
 });
 

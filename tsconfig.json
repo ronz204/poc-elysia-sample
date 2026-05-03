@@ -29,6 +29,7 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
 
+      "@env": ["./source/env.ts"],
       "@dal/*": ["./source/core/dal/*"],
       "@auth/*": ["./source/core/auth/*"],
       
