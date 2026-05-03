@@ -1,15 +1,20 @@
 import { Elysia } from "elysia";
-import { SandboxResponse } from "./sandbox.schema";
 import { AccessPlugin } from "@auth/access/access.plugin";
+import { SandboxResponse, SocketMessage } from "./sandbox.schema";
 
 export const SandboxPlugin = new Elysia({ name: "sandbox.plugin" })
   .use(AccessPlugin)
 
   .ws("/socket", {
+    body: SocketMessage,
     withWsAccess: true,
 
     open: async (ws) => {
       console.log(`WebSocket connection established: ${ws.id}`);
+    },
+
+    message: async (ws, { event }) => {
+      
     },
 
     close: async (ws) => {
